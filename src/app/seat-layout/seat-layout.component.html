@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th></th>
+    <th *ngFor="let col of columns">{{ col }}</th>
+  </tr>
+  <tr *ngFor="let row of rows">
+    <th>{{ row }}</th>
+    <td *ngFor="let col of columns">
+      <input
+        type="checkbox"
+        name="{{ row }}-{{ col }}"
+        id="{{ row }}-{{ col }}"
+      />
+    </td>
+  </tr>
+</table>

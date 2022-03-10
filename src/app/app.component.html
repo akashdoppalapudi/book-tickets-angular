@@ -17,6 +17,16 @@
         (seatsSelectedEvent)="onSeatsSelection($event)"
       ></app-seats-dropdown>
     </div>
-    <div class="seat-selector"></div>
+    <div class="seat-selector">
+      <app-show-description
+        *ngIf="selectedShow !== 0"
+        [selectedShow]="selectedShow"
+      ></app-show-description>
+      <app-seat-layout
+        *ngIf="selectedShow !== 0 && selectedSeatsNumber !== 0"
+        [selectedShow]="selectedShow"
+        [selectedSeatsNumber]="selectedSeatsNumber"
+      ></app-seat-layout>
+    </div>
   </main>
 </div>

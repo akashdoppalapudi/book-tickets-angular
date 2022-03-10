@@ -56,4 +56,8 @@ export class DataService {
     }
     return options;
   }
+
+  getShowDetails(id: number): any {
+    return this.shows.find((show) => show.id == id);
+  }
 }

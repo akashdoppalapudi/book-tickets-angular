@@ -13,28 +13,39 @@ import { TheatreDropdownComponent } from './theatre-dropdown/theatre-dropdown.co
 export class AppComponent {
   title = 'book-tickets';
 
+  selectedShow: number = 0;
+  selectedSeatsNumber: number = 0;
+
   @ViewChild(MovieDropdownComponent) movieDropdown: any;
   @ViewChild(TheatreDropdownComponent) theatreDropdown: any;
   @ViewChild(ShowDropdownComponent) showDropdown: any;
   @ViewChild(SeatsDropdownComponent) seatsDropdown: any;
 
   onCitySelection(event: FilterStatus): void {
+    this.selectedShow = 0;
+    this.selectedSeatsNumber = 0;
     this.movieDropdown.getMovieOptions(event);
   }
 
   onMovieSelection(event: FilterStatus): void {
+    this.selectedShow = 0;
+    this.selectedSeatsNumber = 0;
     this.theatreDropdown.getTheatreOptions(event);
   }
 
   onTheatreSelection(event: FilterStatus): void {
+    this.selectedShow = 0;
+    this.selectedSeatsNumber = 0;
     this.showDropdown.getShowOptions(event);
   }
 
   onShowSelection(event: FilterStatus): void {
+    this.selectedShow = event.show;
+    this.selectedSeatsNumber = 0;
     this.seatsDropdown.getSeatsOptions(event);
   }
 
   onSeatsSelection(event: FilterStatus): void {
-    console.log(event);
+    this.selectedSeatsNumber = event.seats;
   }
 }

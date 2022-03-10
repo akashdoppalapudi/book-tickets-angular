@@ -7,5 +7,5 @@ export interface Show {
   time: string;
   movie: string;
   theatre: Theatre;
-  bookings: number[];
+  bookings: { row: string; col: number }[];
 }
