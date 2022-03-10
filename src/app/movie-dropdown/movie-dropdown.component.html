@@ -1,0 +1,11 @@
+<select
+  #movieDropdown
+  name="movie"
+  id="movie"
+  (change)="onMovieSelected($event.target)"
+>
+  <option value="" selected disabled>Movie</option>
+  <option *ngFor="let option of options" value="{{ option }}">
+    {{ option }}
+  </option>
+</select>
