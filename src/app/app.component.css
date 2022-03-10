@@ -22,5 +22,6 @@ app-theatre-dropdown,
 app-show-dropdown,
 app-seats-dropdown {
   width: 25%;
-  padding: 1% 0;
+  height: 3em;
+  padding: 0.5em 0;
 }
