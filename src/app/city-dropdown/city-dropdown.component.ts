@@ -4,9 +4,11 @@ import {
   EventEmitter,
   Output,
   ViewChild,
+  Input,
 } from '@angular/core';
 import { DataService } from '../data.service';
 import { FilterStatus } from '../models/filter-status.model';
+import { Show } from '../models/show.model';
 
 @Component({
   selector: 'app-city-dropdown',
@@ -23,6 +25,8 @@ export class CityDropdownComponent implements OnInit {
     seats: 0,
   };
 
+  @Input() shows: Show[] = [];
+
   @Output() citySelectedEvent: EventEmitter<FilterStatus> =
     new EventEmitter<FilterStatus>();
 
@@ -31,7 +35,11 @@ export class CityDropdownComponent implements OnInit {
   constructor(public dataService: DataService) {}
 
   ngOnInit(): void {
-    this.options = this.dataService.getFilterOptions('city', this.filterStatus);
+    this.options = this.dataService.getFilterOptions(
+      this.shows,
+      'city',
+      this.filterStatus
+    );
   }
 
   setDefault(): void {

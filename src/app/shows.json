@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Morning Show",
     "time": "11:00 AM",
-    "bookings": ["A-1"],
+    "bookings": [],
     "movie": "Bheemla Nayak",
     "theatre": {
       "name": "Lakshmi Complex",

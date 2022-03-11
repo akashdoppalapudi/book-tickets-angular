@@ -3,7 +3,6 @@ import {
   Input,
   OnInit,
   OnChanges,
-  SimpleChanges,
   Output,
   EventEmitter,
 } from '@angular/core';
@@ -19,6 +18,7 @@ import { Show } from '../models/show.model';
 export class SeatLayoutComponent implements OnInit, OnChanges {
   @Input() selectedShow: number = 0;
   @Input() selectedSeatsNumber: number = 0;
+  @Input() shows: Show[] = [];
 
   @Output() onSelectionChange: EventEmitter<string[]> = new EventEmitter<
     string[]
@@ -33,7 +33,7 @@ export class SeatLayoutComponent implements OnInit, OnChanges {
   constructor(public dataService: DataService) {}
 
   setLayout(): void {
-    this.show = this.dataService.getShowDetails(this.selectedShow);
+    this.show = this.dataService.getShowDetails(this.shows, this.selectedShow);
     this.rows = this.rows.slice(0, this.show.theatre.layout.rows);
     this.columns = [];
     for (let i = 1; i <= this.show.theatre.layout.columns; i++) {

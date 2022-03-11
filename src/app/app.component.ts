@@ -1,19 +1,23 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CityDropdownComponent } from './city-dropdown/city-dropdown.component';
+import { DataService } from './data.service';
 import { FilterStatus } from './models/filter-status.model';
+import { Show } from './models/show.model';
 import { MovieDropdownComponent } from './movie-dropdown/movie-dropdown.component';
 import { SeatsDropdownComponent } from './seats-dropdown/seats-dropdown.component';
 import { ShowDropdownComponent } from './show-dropdown/show-dropdown.component';
 import { TheatreDropdownComponent } from './theatre-dropdown/theatre-dropdown.component';
+import shows from './shows.json';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'book-tickets';
 
+  shows!: Show[];
   selectedShow: number = 0;
   selectedSeatsNumber: number = 0;
   selectedSeats: string[] = [];
@@ -23,6 +27,12 @@ export class AppComponent {
   @ViewChild(TheatreDropdownComponent) theatreDropdown: any;
   @ViewChild(ShowDropdownComponent) showDropdown: any;
   @ViewChild(SeatsDropdownComponent) seatsDropdown: any;
+
+  constructor(public dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.shows = shows;
+  }
 
   onCitySelection(event: FilterStatus): void {
     this.selectedShow = 0;
@@ -57,6 +67,9 @@ export class AppComponent {
   }
 
   onSeatsSubmit(): void {
+    this.shows
+      .find((show) => show.id == this.selectedShow)
+      ?.bookings.push(...this.selectedSeats);
     let emptyFilterStatus: FilterStatus = {
       city: '',
       movie: '',

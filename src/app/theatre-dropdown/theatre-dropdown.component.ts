@@ -1,4 +1,4 @@
-import { ElementRef } from '@angular/core';
+import { ElementRef, Input } from '@angular/core';
 import {
   Component,
   EventEmitter,
@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { DataService } from '../data.service';
 import { FilterStatus } from '../models/filter-status.model';
+import { Show } from '../models/show.model';
 
 @Component({
   selector: 'app-theatre-dropdown',
@@ -17,6 +18,8 @@ import { FilterStatus } from '../models/filter-status.model';
 export class TheatreDropdownComponent implements OnInit {
   options: any[] = [];
   filterStatus: any;
+
+  @Input() shows: Show[] = [];
 
   @Output() theatreSelectedEvent: EventEmitter<FilterStatus> =
     new EventEmitter<FilterStatus>();
@@ -34,6 +37,10 @@ export class TheatreDropdownComponent implements OnInit {
   getTheatreOptions(filterStatus: FilterStatus): void {
     this.theatreDropdown.nativeElement.value = '';
     this.filterStatus = filterStatus;
-    this.options = this.dataService.getFilterOptions('theatre', filterStatus);
+    this.options = this.dataService.getFilterOptions(
+      this.shows,
+      'theatre',
+      filterStatus
+    );
   }
 }

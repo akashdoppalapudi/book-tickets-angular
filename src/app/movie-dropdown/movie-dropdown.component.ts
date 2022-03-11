@@ -1,4 +1,4 @@
-import { ElementRef } from '@angular/core';
+import { ElementRef, Input } from '@angular/core';
 import {
   Component,
   OnInit,
@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { DataService } from '../data.service';
 import { FilterStatus } from '../models/filter-status.model';
+import { Show } from '../models/show.model';
 
 @Component({
   selector: 'app-movie-dropdown',
@@ -17,6 +18,8 @@ import { FilterStatus } from '../models/filter-status.model';
 export class MovieDropdownComponent implements OnInit {
   options: any[] = [];
   filterStatus: any;
+
+  @Input() shows: Show[] = [];
 
   @Output() movieSelectedEvent: EventEmitter<FilterStatus> =
     new EventEmitter<FilterStatus>();
@@ -30,7 +33,11 @@ export class MovieDropdownComponent implements OnInit {
   getMovieOptions(filterStatus: FilterStatus): void {
     this.movieDropdown.nativeElement.value = '';
     this.filterStatus = filterStatus;
-    this.options = this.dataService.getFilterOptions('movie', filterStatus);
+    this.options = this.dataService.getFilterOptions(
+      this.shows,
+      'movie',
+      filterStatus
+    );
   }
 
   onMovieSelected(element: any): void {

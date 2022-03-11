@@ -1,12 +1,14 @@
 import {
   Component,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
 import { DataService } from '../data.service';
 import { FilterStatus } from '../models/filter-status.model';
+import { Show } from '../models/show.model';
 
 @Component({
   selector: 'app-seats-dropdown',
@@ -16,6 +18,8 @@ import { FilterStatus } from '../models/filter-status.model';
 export class SeatsDropdownComponent implements OnInit {
   options: any[] = [];
   filterStatus: any;
+
+  @Input() shows: Show[] = [];
 
   @Output() seatsSelectedEvent: EventEmitter<FilterStatus> =
     new EventEmitter<FilterStatus>();
@@ -29,7 +33,11 @@ export class SeatsDropdownComponent implements OnInit {
   getSeatsOptions(filterStatus: FilterStatus): void {
     this.seatsDropdown.nativeElement.value = '';
     this.filterStatus = filterStatus;
-    this.options = this.dataService.getFilterOptions('seats', filterStatus);
+    this.options = this.dataService.getFilterOptions(
+      this.shows,
+      'seats',
+      filterStatus
+    );
   }
 
   onSeatsSelected(element: any): void {

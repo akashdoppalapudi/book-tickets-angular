@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { FilterStatus } from './models/filter-status.model';
 import { Show } from './models/show.model';
-import { Theatre } from './models/theatre.model';
-import showsData from './shows.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  shows: Show[] = showsData;
-
-  getFilterOptions(filter: string, filterStatus: FilterStatus): any[] {
+  getFilterOptions(
+    shows: Show[],
+    filter: string,
+    filterStatus: FilterStatus
+  ): any[] {
     let options: any[] = [];
     if (filter === 'city') {
-      this.shows.forEach((show) => {
+      shows.forEach((show) => {
         if (!options.includes(show.theatre.city)) {
           options.push(show.theatre.city);
         }
       });
     } else if (filter === 'movie') {
-      this.shows.forEach((show) => {
+      shows.forEach((show) => {
         if (show.theatre.city === filterStatus.city) {
           if (!options.includes(show.movie)) {
             options.push(show.movie);
@@ -27,7 +27,7 @@ export class DataService {
         }
       });
     } else if (filter === 'theatre') {
-      this.shows.forEach((show) => {
+      shows.forEach((show) => {
         if (show.movie === filterStatus.movie) {
           if (
             show.theatre.city === filterStatus.city &&
@@ -38,7 +38,7 @@ export class DataService {
         }
       });
     } else if (filter === 'show') {
-      this.shows.forEach((show) => {
+      shows.forEach((show) => {
         if (
           show.movie === filterStatus.movie &&
           show.theatre.name === filterStatus.theatre
@@ -47,7 +47,7 @@ export class DataService {
         }
       });
     } else if (filter === 'seats') {
-      let theatre: any = this.shows.find(
+      let theatre: any = shows.find(
         (show) => show.id == filterStatus.show
       )?.theatre;
       for (let i = 1; i <= theatre.maxSeats; i++) {
@@ -57,7 +57,7 @@ export class DataService {
     return options;
   }
 
-  getShowDetails(id: number): any {
-    return this.shows.find((show) => show.id == id);
+  getShowDetails(shows: Show[], id: number): any {
+    return shows.find((show) => show.id == id);
   }
 }
