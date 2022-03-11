@@ -10,9 +10,10 @@ import { ShowDropdownComponent } from './show-dropdown/show-dropdown.component';
 import { SeatsDropdownComponent } from './seats-dropdown/seats-dropdown.component';
 import { SeatLayoutComponent } from './seat-layout/seat-layout.component';
 import { ShowDescriptionComponent } from './show-description/show-description.component';
+import { SeatComponent } from './seat/seat.component';
 
 @NgModule({
-  declarations: [AppComponent, CityDropdownComponent, MovieDropdownComponent, TheatreDropdownComponent, ShowDropdownComponent, SeatsDropdownComponent, SeatLayoutComponent, ShowDescriptionComponent],
+  declarations: [AppComponent, CityDropdownComponent, MovieDropdownComponent, TheatreDropdownComponent, ShowDropdownComponent, SeatsDropdownComponent, SeatLayoutComponent, ShowDescriptionComponent, SeatComponent],
   imports: [BrowserModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { DataService } from '../data.service';
 import alphabets from '../alphabets.json';
+import { Show } from '../models/show.model';
 
 @Component({
   selector: 'app-seat-layout',
@@ -16,7 +17,7 @@ import alphabets from '../alphabets.json';
 export class SeatLayoutComponent implements OnInit, OnChanges {
   @Input() selectedShow: number = 0;
   @Input() selectedSeatsNumber: number = 0;
-  show: any;
+  show!: Show;
   rows: string[] = alphabets;
   columns: number[] = [];
 
@@ -29,7 +30,6 @@ export class SeatLayoutComponent implements OnInit, OnChanges {
     for (let i = 1; i <= this.show.theatre.layout.columns; i++) {
       this.columns.push(i);
     }
-    console.log(this.columns);
   }
 
   ngOnInit(): void {
