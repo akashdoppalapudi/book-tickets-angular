@@ -13,7 +13,7 @@ You can start your own angular project by running `ng new <app-name>`
 - Download the code or clone this repository by running
 
 ```bash
-git clone https://github.com/hasnuzama/hacker-news.git
+git clone https://github.com/akashdoppalapudi/book-tickets-angular.git
 ```
 
 - Make sure you have `NodeJs` and `angular-cli` installed on your system.
