@@ -1,27 +1,45 @@
-# BookTickets
+# Book-Tickets-Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+The UI that allows user to filter a show based on city, movie and theatre.
+And allows the user to book tickets.
 
-## Development server
+## Angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Angular is used to build this project.
+You can start your own angular project by running `ng new <app-name>`
 
-## Code scaffolding
+## Run Locally
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Download the code or clone this repository by running
 
-## Build
+```bash
+git clone https://github.com/hasnuzama/hacker-news.git
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Make sure you have `NodeJs` and `angular-cli` installed on your system.
 
-## Running unit tests
+- If you dont have angular cli installed, run
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install -g @angular/cli
+```
 
-## Running end-to-end tests
+- Now cd into the directory and install all the dependencies by running
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm install
+```
 
-## Further help
+- Now run one of the following commands to run the application locally
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng serve --open
+```
+
+or
+
+```bash
+ng serve -o
+```
+
+(using `--open` or `-o` autmatically opens the program in a browser window)
