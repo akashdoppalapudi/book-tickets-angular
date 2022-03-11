@@ -18,7 +18,7 @@ git clone https://github.com/hasnuzama/hacker-news.git
 
 - Make sure you have `NodeJs` and `angular-cli` installed on your system.
 
-- If you dont have angular cli installed, run
+- If you don't have angular cli installed, run
 
 ```bash
 npm install -g @angular/cli
