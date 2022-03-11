@@ -35,3 +35,20 @@ app-seats-dropdown {
   height: 100%;
   text-align: center;
 }
+
+button {
+  margin-top: 1.5em;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  background: skyblue;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+}
+
+button:hover,
+button:active {
+  background: #87d8eb;
+}

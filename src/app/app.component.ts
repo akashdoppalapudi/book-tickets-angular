@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { CityDropdownComponent } from './city-dropdown/city-dropdown.component';
 import { FilterStatus } from './models/filter-status.model';
 import { MovieDropdownComponent } from './movie-dropdown/movie-dropdown.component';
 import { SeatsDropdownComponent } from './seats-dropdown/seats-dropdown.component';
@@ -15,7 +16,9 @@ export class AppComponent {
 
   selectedShow: number = 0;
   selectedSeatsNumber: number = 0;
+  selectedSeats: string[] = [];
 
+  @ViewChild(CityDropdownComponent) cityDropdown: any;
   @ViewChild(MovieDropdownComponent) movieDropdown: any;
   @ViewChild(TheatreDropdownComponent) theatreDropdown: any;
   @ViewChild(ShowDropdownComponent) showDropdown: any;
@@ -47,5 +50,25 @@ export class AppComponent {
 
   onSeatsSelection(event: FilterStatus): void {
     this.selectedSeatsNumber = event.seats;
+  }
+
+  updateSelectedSeats(event: string[]): void {
+    this.selectedSeats = event;
+  }
+
+  onSeatsSubmit(): void {
+    let emptyFilterStatus: FilterStatus = {
+      city: '',
+      movie: '',
+      theatre: '',
+      show: 0,
+      seats: 0,
+    };
+    this.cityDropdown.setDefault();
+    this.onCitySelection(emptyFilterStatus);
+    this.onMovieSelection(emptyFilterStatus);
+    this.onTheatreSelection(emptyFilterStatus);
+    this.onShowSelection(emptyFilterStatus);
+    this.onSeatsSelection(emptyFilterStatus);
   }
 }

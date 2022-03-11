@@ -26,7 +26,15 @@
         *ngIf="selectedShow !== 0 && selectedSeatsNumber !== 0"
         [selectedShow]="selectedShow"
         [selectedSeatsNumber]="selectedSeatsNumber"
+        (onSelectionChange)="updateSelectedSeats($event)"
       ></app-seat-layout>
+      <button
+        *ngIf="selectedShow !== 0 && selectedSeatsNumber !== 0"
+        (click)="onSeatsSubmit()"
+        [disabled]="selectedSeats.length != selectedSeatsNumber"
+      >
+        Book Tickets
+      </button>
     </div>
   </main>
 </div>

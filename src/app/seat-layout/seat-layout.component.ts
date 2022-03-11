@@ -4,6 +4,8 @@ import {
   OnInit,
   OnChanges,
   SimpleChanges,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { DataService } from '../data.service';
 import alphabets from '../alphabets.json';
@@ -17,6 +19,10 @@ import { Show } from '../models/show.model';
 export class SeatLayoutComponent implements OnInit, OnChanges {
   @Input() selectedShow: number = 0;
   @Input() selectedSeatsNumber: number = 0;
+
+  @Output() onSelectionChange: EventEmitter<string[]> = new EventEmitter<
+    string[]
+  >();
 
   show!: Show;
   rows: string[] = alphabets;
@@ -41,10 +47,12 @@ export class SeatLayoutComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.setLayout();
+    this.isSelectionComplete = false;
   }
 
   addSeatToSelection(event: string): void {
     this.selectedSeats.push(event);
+    this.onSelectionChange.emit(this.selectedSeats);
     if (this.selectedSeats.length == this.selectedSeatsNumber) {
       this.isSelectionComplete = true;
     }
@@ -52,6 +60,7 @@ export class SeatLayoutComponent implements OnInit, OnChanges {
 
   removeSeatFromSelection(event: string): void {
     this.selectedSeats.splice(this.selectedSeats.indexOf(event), 1);
+    this.onSelectionChange.emit(this.selectedSeats);
     this.isSelectionComplete = false;
   }
 }

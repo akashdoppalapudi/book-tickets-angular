@@ -1,4 +1,9 @@
-<select name="city" id="city" (change)="onCitySelected($event.target)">
+<select
+  #cityDropdown
+  name="city"
+  id="city"
+  (change)="onCitySelected($event.target)"
+>
   <option value="" selected disabled>City/Region</option>
   <option *ngFor="let option of options" value="{{ option }}">
     {{ option }}

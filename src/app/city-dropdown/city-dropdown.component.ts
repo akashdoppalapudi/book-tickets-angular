@@ -1,4 +1,10 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { DataService } from '../data.service';
 import { FilterStatus } from '../models/filter-status.model';
 
@@ -20,10 +26,16 @@ export class CityDropdownComponent implements OnInit {
   @Output() citySelectedEvent: EventEmitter<FilterStatus> =
     new EventEmitter<FilterStatus>();
 
+  @ViewChild('cityDropdown') cityDropdown: any;
+
   constructor(public dataService: DataService) {}
 
   ngOnInit(): void {
     this.options = this.dataService.getFilterOptions('city', this.filterStatus);
+  }
+
+  setDefault(): void {
+    this.cityDropdown.nativeElement.value = '';
   }
 
   onCitySelected(element: any): void {
