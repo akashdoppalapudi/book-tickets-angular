@@ -1,15 +1,20 @@
-<table>
-  <tr>
-    <th></th>
-    <th *ngFor="let col of columns">{{ col }}</th>
-  </tr>
-  <tr *ngFor="let row of rows">
-    <th>{{ row }}</th>
-    <td *ngFor="let col of columns">
-      <app-seat
-        [seatNumber]="row + '-' + col.toString()"
-        [isBooked]="show.bookings.includes(row + '-' + col.toString())"
-      ></app-seat>
-    </td>
-  </tr>
-</table>
+<div class="table-container">
+  <table>
+    <tr>
+      <th></th>
+      <th *ngFor="let col of columns">{{ col }}</th>
+    </tr>
+    <tr *ngFor="let row of rows">
+      <th>{{ row }}</th>
+      <td *ngFor="let col of columns">
+        <app-seat
+          [seatNumber]="row + '-' + col.toString()"
+          [isBooked]="show.bookings.includes(row + '-' + col.toString())"
+          [isSelectionComplete]="isSelectionComplete"
+          (onSeatSelected)="addSeatToSelection($event)"
+          (onSeatDeSelected)="removeSeatFromSelection($event)"
+        ></app-seat>
+      </td>
+    </tr>
+  </table>
+</div>

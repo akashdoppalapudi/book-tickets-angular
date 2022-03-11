@@ -17,9 +17,12 @@ import { Show } from '../models/show.model';
 export class SeatLayoutComponent implements OnInit, OnChanges {
   @Input() selectedShow: number = 0;
   @Input() selectedSeatsNumber: number = 0;
+
   show!: Show;
   rows: string[] = alphabets;
   columns: number[] = [];
+  selectedSeats: string[] = [];
+  isSelectionComplete: boolean = false;
 
   constructor(public dataService: DataService) {}
 
@@ -38,5 +41,17 @@ export class SeatLayoutComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.setLayout();
+  }
+
+  addSeatToSelection(event: string): void {
+    this.selectedSeats.push(event);
+    if (this.selectedSeats.length == this.selectedSeatsNumber) {
+      this.isSelectionComplete = true;
+    }
+  }
+
+  removeSeatFromSelection(event: string): void {
+    this.selectedSeats.splice(this.selectedSeats.indexOf(event), 1);
+    this.isSelectionComplete = false;
   }
 }

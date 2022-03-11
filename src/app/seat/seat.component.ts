@@ -1,4 +1,12 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-seat',
@@ -8,10 +16,14 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 export class SeatComponent implements OnInit {
   @Input() seatNumber: string = '';
   @Input() isBooked: boolean = false;
+  @Input() isSelectionComplete: boolean = false;
 
   @ViewChild('checkBox') checkBox!: ElementRef;
 
   isSelected: boolean = false;
+
+  @Output() onSeatSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onSeatDeSelected: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}
 
@@ -19,6 +31,10 @@ export class SeatComponent implements OnInit {
 
   onSeatClicked() {
     this.isSelected = !this.isSelected;
-    console.log(this.seatNumber, this.isSelected);
+    if (this.isSelected) {
+      this.onSeatSelected.emit(this.seatNumber);
+    } else {
+      this.onSeatDeSelected.emit(this.seatNumber);
+    }
   }
 }
