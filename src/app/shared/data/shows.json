@@ -4,383 +4,191 @@
     "name": "Morning Show",
     "time": "11:00 AM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "Lakshmi Complex",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 2
   },
   {
     "id": 2,
     "name": "Matinee",
     "time": "02:30 PM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "Lakshmi Complex",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 2
   },
   {
     "id": 3,
     "name": "First Show",
     "time": "05:20 PM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "Lakshmi Complex",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 2
   },
   {
     "id": 4,
     "name": "Second Show",
     "time": "09:00 PM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "Lakshmi Complex",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 2
   },
   {
     "id": 5,
     "name": "Morning Show",
     "time": "11:00 AM",
     "bookings": [],
-    "movie": "The Batman",
-    "theatre": {
-      "name": "Sangameswara Theatre",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 5,
+    "theatreId": 1
   },
   {
     "id": 6,
     "name": "Matinee",
     "time": "02:30 PM",
     "bookings": [],
-    "movie": "The Batman",
-    "theatre": {
-      "name": "Sangameswara Theatre",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 5,
+    "theatreId": 1
   },
   {
     "id": 7,
     "name": "First Show",
     "time": "05:20 PM",
     "bookings": [],
-    "movie": "The Batman",
-    "theatre": {
-      "name": "Sangameswara Theatre",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 5,
+    "theatreId": 1
   },
   {
     "id": 8,
     "name": "Second Show",
     "time": "09:00 PM",
     "bookings": [],
-    "movie": "The Batman",
-    "theatre": {
-      "name": "Sangameswara Theatre",
-      "city": "Tenali",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 5,
+    "theatreId": 1
   },
   {
     "id": 9,
     "name": "Morning Show",
     "time": "11:00 AM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "Bhaskara Theatre",
-      "city": "Guntur",
-      "layout": {
-        "rows": 14,
-        "columns": 25
-      },
-      "maxSeats": 6
-    }
+    "movieId": 1,
+    "theatreId": 3
   },
   {
     "id": 10,
     "name": "Matinee",
     "time": "02:30 PM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "Bhaskara Theatre",
-      "city": "Guntur",
-      "layout": {
-        "rows": 14,
-        "columns": 25
-      },
-      "maxSeats": 6
-    }
+    "movieId": 1,
+    "theatreId": 3
   },
   {
     "id": 11,
     "name": "First Show",
     "time": "05:20 PM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "Bhaskara Theatre",
-      "city": "Guntur",
-      "layout": {
-        "rows": 14,
-        "columns": 25
-      },
-      "maxSeats": 6
-    }
+    "movieId": 1,
+    "theatreId": 3
   },
   {
     "id": 12,
     "name": "Second Show",
     "time": "09:00 PM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "Bhaskara Theatre",
-      "city": "Guntur",
-      "layout": {
-        "rows": 14,
-        "columns": 25
-      },
-      "maxSeats": 6
-    }
+    "movieId": 1,
+    "theatreId": 3
   },
   {
     "id": 13,
     "name": "Morning Show",
     "time": "11:00 AM",
     "bookings": [],
-    "movie": "Spider-man: No Way Home",
-    "theatre": {
-      "name": "PVR Cinemas",
-      "city": "Guntur",
-      "layout": {
-        "rows": 10,
-        "columns": 16
-      },
-      "maxSeats": 4
-    }
+    "movieId": 4,
+    "theatreId": 4
   },
   {
     "id": 14,
     "name": "Matinee",
     "time": "02:30 PM",
     "bookings": [],
-    "movie": "Spider-man: No Way Home",
-    "theatre": {
-      "name": "PVR Cinemas",
-      "city": "Guntur",
-      "layout": {
-        "rows": 10,
-        "columns": 16
-      },
-      "maxSeats": 4
-    }
+    "movieId": 4,
+    "theatreId": 4
   },
   {
     "id": 15,
     "name": "First Show",
     "time": "05:20 PM",
     "bookings": [],
-    "movie": "Spider-man: No Way Home",
-    "theatre": {
-      "name": "PVR Cinemas",
-      "city": "Guntur",
-      "layout": {
-        "rows": 10,
-        "columns": 16
-      },
-      "maxSeats": 4
-    }
+    "movieId": 4,
+    "theatreId": 4
   },
   {
     "id": 16,
     "name": "Second Show",
     "time": "09:00 PM",
     "bookings": [],
-    "movie": "Spider-man: No Way Home",
-    "theatre": {
-      "name": "PVR Cinemas",
-      "city": "Guntur",
-      "layout": {
-        "rows": 10,
-        "columns": 16
-      },
-      "maxSeats": 4
-    }
+    "movieId": 4,
+    "theatreId": 4
   },
   {
     "id": 17,
     "name": "Morning Show",
     "time": "11:00 AM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "PVP Mall",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 6
   },
   {
     "id": 18,
     "name": "Matinee",
     "time": "02:30 PM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "PVP Mall",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 6
   },
   {
     "id": 19,
     "name": "First Show",
     "time": "05:20 PM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "PVP Mall",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 6
   },
   {
     "id": 20,
     "name": "Second Show",
     "time": "09:00 PM",
     "bookings": [],
-    "movie": "Bheemla Nayak",
-    "theatre": {
-      "name": "PVP Mall",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 12,
-        "columns": 20
-      },
-      "maxSeats": 6
-    }
+    "movieId": 2,
+    "theatreId": 6
   },
   {
     "id": 21,
     "name": "Morning Show",
     "time": "11:00 AM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "JLE Movies",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 15,
-        "columns": 24
-      },
-      "maxSeats": 8
-    }
+    "movieId": 1,
+    "theatreId": 5
   },
   {
     "id": 22,
     "name": "Matinee",
     "time": "02:30 PM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "JLE Movies",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 15,
-        "columns": 24
-      },
-      "maxSeats": 8
-    }
+    "movieId": 1,
+    "theatreId": 5
   },
   {
     "id": 23,
     "name": "First Show",
     "time": "05:20 PM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "JLE Movies",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 15,
-        "columns": 24
-      },
-      "maxSeats": 8
-    }
+    "movieId": 1,
+    "theatreId": 5
   },
   {
     "id": 24,
     "name": "Second Show",
     "time": "09:00 PM",
     "bookings": [],
-    "movie": "Pushpa",
-    "theatre": {
-      "name": "JLE Movies",
-      "city": "Vijayawada",
-      "layout": {
-        "rows": 15,
-        "columns": 24
-      },
-      "maxSeats": 8
-    }
+    "movieId": 1,
+    "theatreId": 5
   }
 ]

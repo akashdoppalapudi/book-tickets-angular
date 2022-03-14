@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Sangameswara Theatre",
+    "cityId": 1,
+    "layout": {
+      "rows": 12,
+      "columns": 20,
+      "layout": []
+    },
+    "maxSeats": 6
+  },
+  {
+    "id": 2,
+    "name": "Lakshmi Complex",
+    "cityId": 1,
+    "layout": {
+      "rows": 12,
+      "columns": 20,
+      "layout": []
+    },
+    "maxSeats": 6
+  },
+  {
+    "id": 3,
+    "name": "Bhakar Delux",
+    "cityId": 3,
+    "layout": {
+      "rows": 12,
+      "columns": 20,
+      "layout": []
+    },
+    "maxSeats": 6
+  },
+  {
+    "id": 4,
+    "name": "PVR Complex",
+    "cityId": 3,
+    "layout": {
+      "rows": 12,
+      "columns": 20,
+      "layout": []
+    },
+    "maxSeats": 6
+  },
+  {
+    "id": 5,
+    "name": "JLE Movies",
+    "cityId": 3,
+    "layout": {
+      "rows": 12,
+      "columns": 20,
+      "layout": []
+    },
+    "maxSeats": 6
+  },
+  {
+    "id": 6,
+    "name": "PVP Mall",
+    "cityId": 3,
+    "layout": {
+      "rows": 12,
+      "columns": 20,
+      "layout": []
+    },
+    "maxSeats": 6
+  }
+]
