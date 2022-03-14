@@ -4,7 +4,7 @@
   id="seats"
   (change)="onSeatsSelected($event.target)"
 >
-  <option value="" selected disabled>Seats</option>
+  <option value="{{ 0 }}" selected disabled>Seats</option>
   <option *ngFor="let option of options" value="{{ option }}">
     {{ option }}
   </option>

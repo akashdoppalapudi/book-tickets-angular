@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CityDropdownComponent } from './shared/components/city-dropdown/city-dropdown.component';
-import { DataService } from './shared/services/data.service';
 import { FilterStatus } from './shared/models/filter-status.model';
-import { Show } from './shared/models/show.model';
 import { MovieDropdownComponent } from './shared/components/movie-dropdown/movie-dropdown.component';
 import { SeatsDropdownComponent } from './shared/components/seats-dropdown/seats-dropdown.component';
 import { ShowDropdownComponent } from './shared/components/show-dropdown/show-dropdown.component';
 import { TheatreDropdownComponent } from './shared/components/theatre-dropdown/theatre-dropdown.component';
-import shows from './shared/data/shows.json';
+import { ShowApiService } from './shared/services/show-api.service';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +14,14 @@ import shows from './shared/data/shows.json';
 })
 export class AppComponent implements OnInit {
   title = 'book-tickets';
+  filterStatus: FilterStatus = {
+    city: 0,
+    movie: 0,
+    theatre: 0,
+    show: 0,
+    numberOfSeats: 0,
+  };
 
-  shows!: Show[];
-  selectedShow: number = 0;
-  selectedSeatsNumber: number = 0;
   selectedSeats: string[] = [];
 
   @ViewChild(CityDropdownComponent) cityDropdown: any;
@@ -28,38 +30,40 @@ export class AppComponent implements OnInit {
   @ViewChild(ShowDropdownComponent) showDropdown: any;
   @ViewChild(SeatsDropdownComponent) seatsDropdown: any;
 
-  constructor(public dataService: DataService) {}
+  constructor(public showApiService: ShowApiService) {}
 
   ngOnInit(): void {
-    this.shows = shows;
+    this.showApiService.storeShowsToLocalStorage();
   }
 
-  onCitySelection(event: FilterStatus): void {
-    this.selectedShow = 0;
-    this.selectedSeatsNumber = 0;
-    this.movieDropdown.getMovieOptions(event);
+  onCitySelection(event: number): void {
+    this.filterStatus.city = event;
+    this.movieDropdown.getMovieOptions(this.filterStatus.city);
   }
 
-  onMovieSelection(event: FilterStatus): void {
-    this.selectedShow = 0;
-    this.selectedSeatsNumber = 0;
-    this.theatreDropdown.getTheatreOptions(event);
+  onMovieSelection(event: number): void {
+    this.filterStatus.movie = event;
+    this.theatreDropdown.getTheatreOptions(
+      this.filterStatus.city,
+      this.filterStatus.movie
+    );
   }
 
-  onTheatreSelection(event: FilterStatus): void {
-    this.selectedShow = 0;
-    this.selectedSeatsNumber = 0;
-    this.showDropdown.getShowOptions(event);
+  onTheatreSelection(event: number): void {
+    this.filterStatus.theatre = event;
+    this.showDropdown.getShowOptions(
+      this.filterStatus.theatre,
+      this.filterStatus.movie
+    );
   }
 
-  onShowSelection(event: FilterStatus): void {
-    this.selectedShow = event.show;
-    this.selectedSeatsNumber = 0;
-    this.seatsDropdown.getSeatsOptions(event);
+  onShowSelection(event: number): void {
+    this.filterStatus.show = event;
+    this.seatsDropdown.getSeatsOptions(this.filterStatus.theatre);
   }
 
-  onSeatsSelection(event: FilterStatus): void {
-    this.selectedSeatsNumber = event.seats;
+  onSeatsSelection(event: number): void {
+    this.filterStatus.numberOfSeats = event;
   }
 
   updateSelectedSeats(event: string[]): void {
@@ -67,21 +71,15 @@ export class AppComponent implements OnInit {
   }
 
   onSeatsSubmit(): void {
-    this.shows
-      .find((show) => show.id == this.selectedShow)
-      ?.bookings.push(...this.selectedSeats);
-    let emptyFilterStatus: FilterStatus = {
-      city: '',
-      movie: '',
-      theatre: '',
-      show: 0,
-      seats: 0,
-    };
+    this.showApiService.updateBookings(
+      this.filterStatus.show,
+      this.selectedSeats
+    );
     this.cityDropdown.setDefault();
-    this.onCitySelection(emptyFilterStatus);
-    this.onMovieSelection(emptyFilterStatus);
-    this.onTheatreSelection(emptyFilterStatus);
-    this.onShowSelection(emptyFilterStatus);
-    this.onSeatsSelection(emptyFilterStatus);
+    this.onCitySelection(0);
+    this.onMovieSelection(0);
+    this.onTheatreSelection(0);
+    this.onShowSelection(0);
+    this.onSeatsSelection(0);
   }
 }

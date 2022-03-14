@@ -4,8 +4,8 @@
   id="city"
   (change)="onCitySelected($event.target)"
 >
-  <option value="" selected disabled>City/Region</option>
-  <option *ngFor="let option of options" value="{{ option }}">
-    {{ option }}
+  <option value="{{ 0 }}" selected disabled>City/Region</option>
+  <option *ngFor="let option of options" value="{{ option.id }}">
+    {{ option.name }}
   </option>
 </select>

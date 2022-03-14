@@ -1,4 +1,3 @@
-import { ElementRef, Input } from '@angular/core';
 import {
   Component,
   OnInit,
@@ -6,9 +5,8 @@ import {
   EventEmitter,
   ViewChild,
 } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { FilterStatus } from '../../models/filter-status.model';
-import { Show } from '../../models/show.model';
+import { Movie } from '../../models/movie.model';
+import { MovieApiService } from '../../services/movie-api.service';
 
 @Component({
   selector: 'app-movie-dropdown',
@@ -16,32 +14,23 @@ import { Show } from '../../models/show.model';
   styleUrls: ['./movie-dropdown.component.css'],
 })
 export class MovieDropdownComponent implements OnInit {
-  options: any[] = [];
-  filterStatus: any;
+  options: Movie[] = [];
 
-  @Input() shows: Show[] = [];
-
-  @Output() movieSelectedEvent: EventEmitter<FilterStatus> =
-    new EventEmitter<FilterStatus>();
+  @Output() movieSelectedEvent: EventEmitter<number> =
+    new EventEmitter<number>();
 
   @ViewChild('movieDropdown') movieDropdown: any;
 
-  constructor(public dataService: DataService) {}
+  constructor(public movieApiService: MovieApiService) {}
 
   ngOnInit(): void {}
 
-  getMovieOptions(filterStatus: FilterStatus): void {
-    this.movieDropdown.nativeElement.value = '';
-    this.filterStatus = filterStatus;
-    this.options = this.dataService.getFilterOptions(
-      this.shows,
-      'movie',
-      filterStatus
-    );
+  getMovieOptions(cityId: number): void {
+    this.movieDropdown.nativeElement.value = 0;
+    this.options = this.movieApiService.getMovies(cityId);
   }
 
   onMovieSelected(element: any): void {
-    this.filterStatus.movie = element.value;
-    this.movieSelectedEvent.emit(this.filterStatus);
+    this.movieSelectedEvent.emit(element.value);
   }
 }

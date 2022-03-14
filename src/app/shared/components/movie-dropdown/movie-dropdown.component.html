@@ -4,8 +4,8 @@
   id="movie"
   (change)="onMovieSelected($event.target)"
 >
-  <option value="" selected disabled>Movie</option>
-  <option *ngFor="let option of options" value="{{ option }}">
-    {{ option }}
+  <option value="{{ 0 }}" selected disabled>Movie</option>
+  <option *ngFor="let option of options" value="{{ option.id }}">
+    {{ option.name }}
   </option>
 </select>

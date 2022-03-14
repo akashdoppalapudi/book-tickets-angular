@@ -13,4 +13,8 @@ export class CityApiService {
   getCities(): City[] {
     return this.cities;
   }
+
+  getCityById(id: number): City {
+    return this.cities.filter((city) => city.id == id)[0];
+  }
 }

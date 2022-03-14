@@ -1,19 +1,19 @@
 <div class="table-container">
   <table>
-    <tr>
-      <th></th>
-      <th *ngFor="let col of columns">{{ col }}</th>
-    </tr>
-    <tr *ngFor="let row of rows">
-      <th>{{ row }}</th>
-      <td *ngFor="let col of columns">
+    <tr *ngFor="let row of layout">
+      <th *ngIf="row[0].isSeat && row[0].seatNumber">
+        {{ row[0].seatNumber.substring(0, 1) }}
+      </th>
+      <td *ngFor="let seat of row">
         <app-seat
-          [seatNumber]="row + '-' + col.toString()"
-          [isBooked]="show.bookings.includes(row + '-' + col.toString())"
+          *ngIf="seat.isSeat && seat.seatNumber"
+          [seatNumber]="seat.seatNumber"
+          [isBooked]="show.bookings.includes(seat.seatNumber)"
           [isSelectionComplete]="isSelectionComplete"
           (onSeatSelected)="addSeatToSelection($event)"
           (onSeatDeSelected)="removeSeatFromSelection($event)"
         ></app-seat>
+        <div *ngIf="!seat.isSeat"></div>
       </td>
     </tr>
   </table>

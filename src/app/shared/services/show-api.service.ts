@@ -34,11 +34,17 @@ export class ShowApiService {
       }
     });
 
-    return shows.filter((show) => show.id in shortlistedShowIds);
+    return shows.filter((show) => shortlistedShowIds.includes(show.id));
   }
 
   getShowById(id: number): Show {
     let shows: Show[] = this.getShowsFromLocalStorage();
     return shows.filter((show) => show.id == id)[0];
+  }
+
+  updateBookings(id: number, bookings: string[]): void {
+    let shows: Show[] = this.getShowsFromLocalStorage();
+    shows.find((show) => show.id == id)?.bookings.push(...bookings);
+    localStorage.setItem('shows', JSON.stringify(shows));
   }
 }

@@ -6,9 +6,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { FilterStatus } from '../../models/filter-status.model';
 import { Show } from '../../models/show.model';
+import { Theatre } from '../../models/theatre.model';
+import { TheatreApiService } from '../../services/theatre-api.service';
 
 @Component({
   selector: 'app-seats-dropdown',
@@ -16,32 +16,31 @@ import { Show } from '../../models/show.model';
   styleUrls: ['./seats-dropdown.component.css'],
 })
 export class SeatsDropdownComponent implements OnInit {
-  options: any[] = [];
+  options: number[] = [];
   filterStatus: any;
 
   @Input() shows: Show[] = [];
 
-  @Output() seatsSelectedEvent: EventEmitter<FilterStatus> =
-    new EventEmitter<FilterStatus>();
+  @Output() seatsSelectedEvent: EventEmitter<number> =
+    new EventEmitter<number>();
 
   @ViewChild('seatsDropdown') seatsDropdown: any;
 
-  constructor(public dataService: DataService) {}
+  constructor(public theatreApiService: TheatreApiService) {}
 
   ngOnInit(): void {}
 
-  getSeatsOptions(filterStatus: FilterStatus): void {
-    this.seatsDropdown.nativeElement.value = '';
-    this.filterStatus = filterStatus;
-    this.options = this.dataService.getFilterOptions(
-      this.shows,
-      'seats',
-      filterStatus
-    );
+  getSeatsOptions(theatreId: number): void {
+    this.seatsDropdown.nativeElement.value = 0;
+    this.seatsSelectedEvent.emit(0);
+    this.options = [];
+    let theatre: Theatre = this.theatreApiService.getTheatreById(theatreId);
+    for (let i = 1; i <= theatre.maxSeats; i++) {
+      this.options.push(i);
+    }
   }
 
   onSeatsSelected(element: any): void {
-    this.filterStatus.seats = element.value;
-    this.seatsSelectedEvent.emit(this.filterStatus);
+    this.seatsSelectedEvent.emit(element.value);
   }
 }

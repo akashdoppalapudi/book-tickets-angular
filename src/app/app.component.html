@@ -2,43 +2,36 @@
   <main>
     <div class="filter-dropdowns">
       <app-city-dropdown
-        [shows]="shows"
         (citySelectedEvent)="onCitySelection($event)"
       ></app-city-dropdown>
       <app-movie-dropdown
-        [shows]="shows"
         (movieSelectedEvent)="onMovieSelection($event)"
       ></app-movie-dropdown>
       <app-theatre-dropdown
-        [shows]="shows"
         (theatreSelectedEvent)="onTheatreSelection($event)"
       ></app-theatre-dropdown>
       <app-show-dropdown
-        [shows]="shows"
         (showSelectedEvent)="onShowSelection($event)"
       ></app-show-dropdown>
       <app-seats-dropdown
-        [shows]="shows"
         (seatsSelectedEvent)="onSeatsSelection($event)"
       ></app-seats-dropdown>
     </div>
     <div class="seat-selector">
       <app-show-description
-        [shows]="shows"
-        *ngIf="selectedShow !== 0"
-        [selectedShow]="selectedShow"
+        *ngIf="filterStatus.show > 0"
+        [selectedShow]="filterStatus.show"
       ></app-show-description>
       <app-seat-layout
-        [shows]="shows"
-        *ngIf="selectedShow !== 0 && selectedSeatsNumber !== 0"
-        [selectedShow]="selectedShow"
-        [selectedSeatsNumber]="selectedSeatsNumber"
+        *ngIf="filterStatus.show > 0 && filterStatus.numberOfSeats > 0"
+        [selectedShow]="filterStatus.show"
+        [selectedSeatsNumber]="filterStatus.numberOfSeats"
         (onSelectionChange)="updateSelectedSeats($event)"
       ></app-seat-layout>
       <button
-        *ngIf="selectedShow !== 0 && selectedSeatsNumber !== 0"
+        *ngIf="filterStatus.show > 0 && filterStatus.numberOfSeats > 0"
         (click)="onSeatsSubmit()"
-        [disabled]="selectedSeats.length != selectedSeatsNumber"
+        [disabled]="selectedSeats.length != filterStatus.numberOfSeats"
       >
         Book Tickets
       </button>

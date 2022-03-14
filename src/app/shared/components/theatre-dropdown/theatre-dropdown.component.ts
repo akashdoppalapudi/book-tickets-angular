@@ -1,4 +1,3 @@
-import { ElementRef, Input } from '@angular/core';
 import {
   Component,
   EventEmitter,
@@ -6,9 +5,8 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { FilterStatus } from '../../models/filter-status.model';
-import { Show } from '../../models/show.model';
+import { Theatre } from '../../models/theatre.model';
+import { TheatreApiService } from '../../services/theatre-api.service';
 
 @Component({
   selector: 'app-theatre-dropdown',
@@ -16,31 +14,22 @@ import { Show } from '../../models/show.model';
   styleUrls: ['./theatre-dropdown.component.css'],
 })
 export class TheatreDropdownComponent implements OnInit {
-  options: any[] = [];
-  filterStatus: any;
+  options: Theatre[] = [];
 
-  @Input() shows: Show[] = [];
-
-  @Output() theatreSelectedEvent: EventEmitter<FilterStatus> =
-    new EventEmitter<FilterStatus>();
+  @Output() theatreSelectedEvent: EventEmitter<number> =
+    new EventEmitter<number>();
 
   @ViewChild('theatreDropdown') theatreDropdown: any;
-  constructor(public dataService: DataService) {}
+  constructor(public theatreApiService: TheatreApiService) {}
 
   ngOnInit(): void {}
 
   onTheatreSelected(element: any): void {
-    this.filterStatus.theatre = element.value;
-    this.theatreSelectedEvent.emit(this.filterStatus);
+    this.theatreSelectedEvent.emit(element.value);
   }
 
-  getTheatreOptions(filterStatus: FilterStatus): void {
-    this.theatreDropdown.nativeElement.value = '';
-    this.filterStatus = filterStatus;
-    this.options = this.dataService.getFilterOptions(
-      this.shows,
-      'theatre',
-      filterStatus
-    );
+  getTheatreOptions(cityId: number, movieId: number): void {
+    this.theatreDropdown.nativeElement.value = 0;
+    this.options = this.theatreApiService.getTheatres(cityId, movieId);
   }
 }

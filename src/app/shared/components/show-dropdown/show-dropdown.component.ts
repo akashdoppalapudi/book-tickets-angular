@@ -1,14 +1,12 @@
 import {
   Component,
   EventEmitter,
-  Input,
   OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { FilterStatus } from '../../models/filter-status.model';
 import { Show } from '../../models/show.model';
+import { ShowApiService } from '../../services/show-api.service';
 
 @Component({
   selector: 'app-show-dropdown',
@@ -16,32 +14,23 @@ import { Show } from '../../models/show.model';
   styleUrls: ['./show-dropdown.component.css'],
 })
 export class ShowDropdownComponent implements OnInit {
-  options: any[] = [];
-  filterStatus: any;
+  options: Show[] = [];
 
-  @Input() shows: Show[] = [];
-
-  @Output() showSelectedEvent: EventEmitter<FilterStatus> =
-    new EventEmitter<FilterStatus>();
+  @Output() showSelectedEvent: EventEmitter<number> =
+    new EventEmitter<number>();
 
   @ViewChild('showDropdown') showDropdown: any;
 
-  constructor(public dataService: DataService) {}
+  constructor(public showApiService: ShowApiService) {}
 
   ngOnInit(): void {}
 
-  getShowOptions(filterStatus: FilterStatus): void {
-    this.showDropdown.nativeElement.value = '';
-    this.filterStatus = filterStatus;
-    this.options = this.dataService.getFilterOptions(
-      this.shows,
-      'show',
-      filterStatus
-    );
+  getShowOptions(theatreId: number, movieId: number): void {
+    this.showDropdown.nativeElement.value = 0;
+    this.options = this.showApiService.getShows(theatreId, movieId);
   }
 
   onShowSelected(element: any): void {
-    this.filterStatus.show = element.value;
-    this.showSelectedEvent.emit(this.filterStatus);
+    this.showSelectedEvent.emit(element.value);
   }
 }

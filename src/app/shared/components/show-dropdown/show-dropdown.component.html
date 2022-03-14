@@ -4,8 +4,8 @@
   id="show"
   (change)="onShowSelected($event.target)"
 >
-  <option value="" selected disabled>Show</option>
+  <option value="{{ 0 }}" selected disabled>Show</option>
   <option *ngFor="let option of options" value="{{ option.id }}">
-    {{ option.name }}
+    {{ option.name }} - {{ option.time }}
   </option>
 </select>

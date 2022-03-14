@@ -6,9 +6,11 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import alphabets from '../../data/alphabets.json';
+import { Seat } from '../../models/seat.model';
 import { Show } from '../../models/show.model';
+import { Theatre } from '../../models/theatre.model';
+import { ShowApiService } from '../../services/show-api.service';
+import { TheatreApiService } from '../../services/theatre-api.service';
 
 @Component({
   selector: 'app-seat-layout',
@@ -18,27 +20,28 @@ import { Show } from '../../models/show.model';
 export class SeatLayoutComponent implements OnInit, OnChanges {
   @Input() selectedShow: number = 0;
   @Input() selectedSeatsNumber: number = 0;
-  @Input() shows: Show[] = [];
 
   @Output() onSelectionChange: EventEmitter<string[]> = new EventEmitter<
     string[]
   >();
 
   show!: Show;
-  rows: string[] = alphabets;
-  columns: number[] = [];
+  layout!: Seat[][];
   selectedSeats: string[] = [];
   isSelectionComplete: boolean = false;
 
-  constructor(public dataService: DataService) {}
+  constructor(
+    public showApiService: ShowApiService,
+    public theatreApiService: TheatreApiService
+  ) {}
 
   setLayout(): void {
-    this.show = this.dataService.getShowDetails(this.shows, this.selectedShow);
-    this.rows = this.rows.slice(0, this.show.theatre.layout.rows);
-    this.columns = [];
-    for (let i = 1; i <= this.show.theatre.layout.columns; i++) {
-      this.columns.push(i);
-    }
+    this.show = this.showApiService.getShowById(this.selectedShow);
+    let theatre: Theatre = this.theatreApiService.getTheatreById(
+      this.show.theatreId
+    );
+    this.layout = theatre.layout.layout;
+    console.log(theatre.layout);
   }
 
   ngOnInit(): void {

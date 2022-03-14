@@ -4,11 +4,9 @@ import {
   EventEmitter,
   Output,
   ViewChild,
-  Input,
 } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { FilterStatus } from '../../models/filter-status.model';
-import { Show } from '../../models/show.model';
+import { CityApiService } from '../../services/city-api.service';
+import { City } from '../../models/city.model';
 
 @Component({
   selector: 'app-city-dropdown',
@@ -16,38 +14,24 @@ import { Show } from '../../models/show.model';
   styleUrls: ['./city-dropdown.component.css'],
 })
 export class CityDropdownComponent implements OnInit {
-  options: any[] = [];
-  filterStatus: FilterStatus = {
-    city: '',
-    movie: '',
-    theatre: '',
-    show: 0,
-    seats: 0,
-  };
+  options: City[] = [];
 
-  @Input() shows: Show[] = [];
-
-  @Output() citySelectedEvent: EventEmitter<FilterStatus> =
-    new EventEmitter<FilterStatus>();
+  @Output() citySelectedEvent: EventEmitter<number> =
+    new EventEmitter<number>();
 
   @ViewChild('cityDropdown') cityDropdown: any;
 
-  constructor(public dataService: DataService) {}
+  constructor(public cityApiService: CityApiService) {}
 
   ngOnInit(): void {
-    this.options = this.dataService.getFilterOptions(
-      this.shows,
-      'city',
-      this.filterStatus
-    );
+    this.options = this.cityApiService.getCities();
   }
 
   setDefault(): void {
-    this.cityDropdown.nativeElement.value = '';
+    this.cityDropdown.nativeElement.value = 0;
   }
 
   onCitySelected(element: any): void {
-    this.filterStatus.city = element.value;
-    this.citySelectedEvent.emit(this.filterStatus);
+    this.citySelectedEvent.emit(element.value);
   }
 }

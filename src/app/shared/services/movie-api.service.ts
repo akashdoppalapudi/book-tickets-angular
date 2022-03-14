@@ -34,6 +34,12 @@ export class MovieApiService {
       }
     });
 
-    return this.movies.filter((movie) => movie.id in shortlistedMovieIds);
+    return this.movies.filter((movie) =>
+      shortlistedMovieIds.includes(movie.id)
+    );
+  }
+
+  getMovieById(id: number): Movie {
+    return this.movies.filter((movie) => movie.id == id)[0];
   }
 }

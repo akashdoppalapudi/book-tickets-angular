@@ -13,15 +13,12 @@ export class TheatreApiService {
   constructor(public showApiService: ShowApiService) {}
 
   getTheatreById(id: number): Theatre {
-    return this.theatres.filter((theatre) => {
-      theatre.id == id;
-    })[0];
+    return this.theatres.filter((theatre) => theatre.id == id)[0];
   }
 
   getTheatres(cityId: number, movieId: number): Theatre[] {
     let shortlistedTheatreIds: number[] = [];
     let shows: Show[] = this.showApiService.getShowsFromLocalStorage();
-
     shows.forEach((show) => {
       let theatre: Theatre = this.getTheatreById(show.theatreId);
       if (
@@ -33,8 +30,8 @@ export class TheatreApiService {
       }
     });
 
-    return this.theatres.filter(
-      (theatre) => theatre.id in shortlistedTheatreIds
+    return this.theatres.filter((theatre) =>
+      shortlistedTheatreIds.includes(theatre.id)
     );
   }
 }
