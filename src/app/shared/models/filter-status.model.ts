@@ -1,7 +1,7 @@
 export interface FilterStatus {
-  city: string;
-  movie: string;
-  theatre: string;
+  city: number;
+  movie: number;
+  theatre: number;
   show: number;
-  seats: number;
+  numberOfSeats: number;
 }
