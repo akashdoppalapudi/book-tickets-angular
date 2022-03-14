@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { DataService } from '../data.service';
-import { Show } from '../models/show.model';
+import { DataService } from '../../services/data.service';
+import { Show } from '../../models/show.model';
 
 @Component({
   selector: 'app-show-description',

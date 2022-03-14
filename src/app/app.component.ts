@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CityDropdownComponent } from './city-dropdown/city-dropdown.component';
-import { DataService } from './data.service';
-import { FilterStatus } from './models/filter-status.model';
-import { Show } from './models/show.model';
-import { MovieDropdownComponent } from './movie-dropdown/movie-dropdown.component';
-import { SeatsDropdownComponent } from './seats-dropdown/seats-dropdown.component';
-import { ShowDropdownComponent } from './show-dropdown/show-dropdown.component';
-import { TheatreDropdownComponent } from './theatre-dropdown/theatre-dropdown.component';
-import shows from './shows.json';
+import { CityDropdownComponent } from './shared/components/city-dropdown/city-dropdown.component';
+import { DataService } from './shared/services/data.service';
+import { FilterStatus } from './shared/models/filter-status.model';
+import { Show } from './shared/models/show.model';
+import { MovieDropdownComponent } from './shared/components/movie-dropdown/movie-dropdown.component';
+import { SeatsDropdownComponent } from './shared/components/seats-dropdown/seats-dropdown.component';
+import { ShowDropdownComponent } from './shared/components/show-dropdown/show-dropdown.component';
+import { TheatreDropdownComponent } from './shared/components/theatre-dropdown/theatre-dropdown.component';
+import shows from './shared/data/shows.json';
 
 @Component({
   selector: 'app-root',

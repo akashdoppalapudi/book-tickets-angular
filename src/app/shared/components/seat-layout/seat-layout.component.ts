@@ -6,9 +6,9 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { DataService } from '../data.service';
-import alphabets from '../alphabets.json';
-import { Show } from '../models/show.model';
+import { DataService } from '../../services/data.service';
+import alphabets from '../../data/alphabets.json';
+import { Show } from '../../models/show.model';
 
 @Component({
   selector: 'app-seat-layout',

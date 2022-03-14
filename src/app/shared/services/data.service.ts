@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FilterStatus } from './models/filter-status.model';
-import { Show } from './models/show.model';
+import { FilterStatus } from '../models/filter-status.model';
+import { Show } from '../models/show.model';
 
 @Injectable({
   providedIn: 'root',

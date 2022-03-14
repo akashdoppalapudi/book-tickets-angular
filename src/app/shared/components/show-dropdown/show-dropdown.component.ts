@@ -6,9 +6,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { DataService } from '../data.service';
-import { FilterStatus } from '../models/filter-status.model';
-import { Show } from '../models/show.model';
+import { DataService } from '../../services/data.service';
+import { FilterStatus } from '../../models/filter-status.model';
+import { Show } from '../../models/show.model';
 
 @Component({
   selector: 'app-show-dropdown',
