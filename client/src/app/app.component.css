@@ -1,0 +1,55 @@
+.page-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+main {
+  width: 90%;
+  height: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-dropdowns {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+app-city-dropdown,
+app-movie-dropdown,
+app-theatre-dropdown,
+app-show-dropdown,
+app-seats-dropdown {
+  width: 100%;
+  height: 3em;
+  padding: 0.5em 0;
+}
+
+.seat-selector {
+  width: 75%;
+  height: 100%;
+  text-align: center;
+}
+
+button {
+  margin-top: 1.5em;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  background: skyblue;
+  color: white;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+}
+
+button:hover,
+button:active {
+  background: #87d8eb;
+}

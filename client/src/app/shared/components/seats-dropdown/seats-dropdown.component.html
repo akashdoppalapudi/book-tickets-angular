@@ -1,0 +1,11 @@
+<select
+  #seatsDropdown
+  name="seats"
+  id="seats"
+  (change)="onSeatsSelected($event.target)"
+>
+  <option value="{{ 0 }}" selected disabled>Seats</option>
+  <option *ngFor="let option of options" value="{{ option }}">
+    {{ option }}
+  </option>
+</select>

@@ -1,0 +1,12 @@
+<input
+  #checkBox
+  type="checkbox"
+  name="{{ seatNumber }}"
+  id="{{ seatNumber }}"
+  [disabled]="isBooked || (!isBooked && isSelectionComplete && !isSelected)"
+  (change)="onSeatClicked()"
+/>
+<label
+  [ngClass]="{ booked: isBooked, selected: isSelected }"
+  for="{{ seatNumber }}"
+></label>

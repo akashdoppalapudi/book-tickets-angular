@@ -1,0 +1,40 @@
+<div class="page-container">
+  <main>
+    <div class="filter-dropdowns">
+      <app-city-dropdown
+        (citySelectedEvent)="onCitySelection($event)"
+      ></app-city-dropdown>
+      <app-movie-dropdown
+        (movieSelectedEvent)="onMovieSelection($event)"
+      ></app-movie-dropdown>
+      <app-theatre-dropdown
+        (theatreSelectedEvent)="onTheatreSelection($event)"
+      ></app-theatre-dropdown>
+      <app-show-dropdown
+        (showSelectedEvent)="onShowSelection($event)"
+      ></app-show-dropdown>
+      <app-seats-dropdown
+        (seatsSelectedEvent)="onSeatsSelection($event)"
+      ></app-seats-dropdown>
+    </div>
+    <div class="seat-selector">
+      <app-show-description
+        *ngIf="filterStatus.show > 0"
+        [selectedShow]="filterStatus.show"
+      ></app-show-description>
+      <app-seat-layout
+        *ngIf="filterStatus.show > 0 && filterStatus.numberOfSeats > 0"
+        [selectedShow]="filterStatus.show"
+        [selectedSeatsNumber]="filterStatus.numberOfSeats"
+        (onSelectionChange)="updateSelectedSeats($event)"
+      ></app-seat-layout>
+      <button
+        *ngIf="filterStatus.show > 0 && filterStatus.numberOfSeats > 0"
+        (click)="onSeatsSubmit()"
+        [disabled]="selectedSeats.length != filterStatus.numberOfSeats"
+      >
+        Book Tickets
+      </button>
+    </div>
+  </main>
+</div>
